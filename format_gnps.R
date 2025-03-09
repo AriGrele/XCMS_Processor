@@ -29,7 +29,10 @@ gnps_features = cbind(gnps_features[,c('ID','cluster','pcgroup','Compound_Name',
     Compound_Name[check] = NA
     superclass[check]    = NA
     class[check]         = NA
-    subclass[check]      = NA})
+    subclass[check]      = NA
+    MQScore[check]       = NA
+    SharedPeaks[check]   = NA
+    MZErrorPPM[check]    = NA})
 
 pcgroups = unique(gnps_features$pcgroup)
 for(group in pcgroups){
@@ -43,7 +46,9 @@ for(group in pcgroups){
     gnps_features$superclass[use]    = gnps_features$superclass[use][check]
     gnps_features$class[use]         = gnps_features$class[use][check]
     gnps_features$subclass[use]      = gnps_features$subclass[use][check]
-    gnps_features$MQScore[use]       = gnps_features$MQScore[use][check]}}
+    gnps_features$MQScore[use]       = gnps_features$MQScore[use][check]
+    gnps_features$SharedPeaks[use]   = gnps_features$SharedPeaks[use][check]
+    gnps_features$MZErrorPPM[use]    = gnps_features$MZErrorPPM[use][check]}}
 
 gnps_features = replace(gnps_features,gnps_features=='N/A',NA)
 gnps_features[c('Compound_Name','superclass','class','subclass')] = 
